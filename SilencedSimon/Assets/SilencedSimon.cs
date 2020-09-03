@@ -19,7 +19,7 @@ public class SilencedSimon : MonoBehaviour {
     public GameObject[] BamboozledAgainFanfare;
     public Material[] IDontKnowIfINeedThis;
     public TextMesh[] RB_GAY_WK;
-    public GameObject Blocker;
+    public GameObject[] Blocker;
 
     int[] SmallNumbers = {1, 2, 3}; //One sound from 1-3 Decibels
     int[] MediumNumbers = {4, 5, 6, 7, 8, 9}; //Two sounds from 4-9 Decibels
@@ -29,6 +29,7 @@ public class SilencedSimon : MonoBehaviour {
     int[] VolumeComparison = new int[4];
     int[] Submission = new int[4];
     int DecibelReader;
+    int ButtonPressCount;
 
     string[] FuckYouDeaf = {"Lowest", "SecondLowest", "SecondHighest", "Highest"};
     string[] ColorNames = {"Blue", "Green", "Red", "Yellow"};
@@ -59,6 +60,7 @@ public class SilencedSimon : MonoBehaviour {
         ColorblindENGAGE = true;
       }
       DecibelReader = UnityEngine.Random.Range(60, 70);
+      Deciblometer.text = DecibelReader.ToString() + ".0 db";
       Debug.LogFormat("[Silenced Simon #{0}] It starts at {1}.", moduleId, DecibelReader);
       PossibleButtons.Shuffle();
       for (int i = 0; i < 4; i++) {
@@ -106,7 +108,11 @@ public class SilencedSimon : MonoBehaviour {
       Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, Button.transform);
       for (int i = 0; i < Buttons.Length; i++) {
         if (Button == Buttons[i]) {
-          if (PreviouslyPressed[i]) {
+          if (moduleSolved) {
+            Audio.PlaySoundAtTransform(FuckYouDeaf[VolumeComparison[i]], transform);
+            return;
+          }
+          else if (PreviouslyPressed[i]) {
             Audio.PlaySoundAtTransform(FuckYouDeaf[VolumeComparison[i]], transform);
             GetComponent<KMBombModule>().HandleStrike();
             return;
@@ -131,7 +137,6 @@ public class SilencedSimon : MonoBehaviour {
                   GetComponent<KMBombModule>().HandleStrike();
                 }
               }
-              Debug.Log(VolumeComparison[i]);
               Audio.PlaySoundAtTransform(FuckYouDeaf[VolumeComparison[i]], transform);
               if (DecibelReader < 10) {
                 Deciblometer.text = "0" + DecibelReader.ToString() + ".0 db";
@@ -139,6 +144,7 @@ public class SilencedSimon : MonoBehaviour {
               else {
                 Deciblometer.text = DecibelReader.ToString() + ".0 db";
               }
+              ButtonPressCount++;
               Debug.LogFormat("[Silenced Simon #{0}] After pressing {1}, you are at {2}.", moduleId, ColorNames[PossibleButtons[i]], DecibelReader);
             }
             else {
@@ -179,6 +185,7 @@ public class SilencedSimon : MonoBehaviour {
           }
           if (Valid) {
             GetComponent<KMBombModule>().HandlePass();
+            moduleSolved = true;
             for (int i = 0; i < 7; i++) {
               RB_GAY_WK[i].text = "";
             }
@@ -269,28 +276,22 @@ public class SilencedSimon : MonoBehaviour {
       }
     }
 
-    IEnumerator MoveLeft () {
-      LeftMover = true;
-      for (int i = 0; i < 4; i++) {
-        Blocker.transform.Translate(-0.00255f, 0f, 0f);
-        yield return new WaitForSeconds(.01f);
-      }
-    }
-
-    IEnumerator MoveDown () {
-      DownMover = true;
-      for (int i = 0; i < 4; i++) {
-        Blocker.transform.Translate(0f, 0f, 0.02986f);
-        yield return new WaitForSecondsRealtime(.01f);
-      }
-    }
-
     void Update () {
-      if (Bomb.GetStrikes() > 2 && !DownMover) {
-        StartCoroutine(MoveDown());
+      if (Bomb.GetStrikes() >= 2) {
+        Blocker[0].gameObject.SetActive(false);
+        Blocker[1].gameObject.SetActive(false);
       }
-      else if (Bomb.GetStrikes() == 2 && !LeftMover) {
-        StartCoroutine(MoveLeft());
+      else if (ButtonPressCount % 10 == 0 && ButtonPressCount != 0) {
+        Blocker[0].gameObject.SetActive(true);
+        Blocker[1].gameObject.SetActive(false);
+      }
+      else if (ButtonPressCount % 5 == 0) {
+        Blocker[0].gameObject.SetActive(false);
+        Blocker[1].gameObject.SetActive(false);
+      }
+      else {
+        Blocker[0].gameObject.SetActive(false);
+        Blocker[1].gameObject.SetActive(true);
       }
     }
 

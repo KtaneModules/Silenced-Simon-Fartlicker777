@@ -14,7 +14,7 @@ MonoBehaviour:
   id: SilencedSimon
   title: Silenced Simon
   author: me
-  description: 
+  description: "\"\u2756\" - Simon.\n\nManual can be found at ktane.timwi.de"
   version: 
   outputFolder: build
-  previewImage: {fileID: 2800000, guid: cc5bb37c16b5475449e49a0ed41373db, type: 3}
+  previewImage: {fileID: 2800000, guid: 64fee57ecd968f64d8db7769a344dd6f, type: 3}
