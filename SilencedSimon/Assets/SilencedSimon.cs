@@ -148,6 +148,7 @@ public class SilencedSimon : MonoBehaviour {
               Debug.LogFormat("[Silenced Simon #{0}] After pressing {1}, you are at {2}.", moduleId, ColorNames[PossibleButtons[i]], DecibelReader);
             }
             else {
+              Audio.PlaySoundAtTransform(FuckYouDeaf[VolumeComparison[i]], transform);
               if (Positivity) {
                 Submission[i]++;
                 if (i != 3) {
@@ -257,22 +258,102 @@ public class SilencedSimon : MonoBehaviour {
 
     IEnumerator SolveAnimation () {
       int Iteration = 0;
-      while (true) {
-        BamboozledAgainFanfare[0].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
-        yield return new WaitForSeconds(.1f);
-        BamboozledAgainFanfare[1].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
-        yield return new WaitForSeconds(.1f);
-        BamboozledAgainFanfare[4].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
-        yield return new WaitForSeconds(.1f);
-        BamboozledAgainFanfare[6].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
-        yield return new WaitForSeconds(.1f);
-        BamboozledAgainFanfare[5].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
-        yield return new WaitForSeconds(.1f);
-        BamboozledAgainFanfare[2].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
-        yield return new WaitForSeconds(.1f);
-        BamboozledAgainFanfare[3].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
-        yield return new WaitForSeconds(.1f);
-        Iteration++;
+      switch (UnityEngine.Random.Range(0, 5)) {
+        case 0:
+        while (true) {
+          BamboozledAgainFanfare[0].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[1].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[4].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[6].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[5].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[2].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[3].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          Iteration++;
+        }
+        break;
+        case 1:
+        while (true) {
+          BamboozledAgainFanfare[3].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[2].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[5].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[6].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[4].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[1].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[0].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          Iteration++;
+        }
+        break;
+        case 2:
+        while (true) {
+          BamboozledAgainFanfare[0].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[2].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[3].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[1].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[4].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[6].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[5].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          Iteration++;
+        }
+        break;
+        case 3:
+        while (true) {
+          BamboozledAgainFanfare[0].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[1].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[2].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[3].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[4].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[5].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[6].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          Iteration++;
+        }
+        break;
+        case 4:
+        while (true) {
+          BamboozledAgainFanfare[0].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[1].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[3].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[2].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[5].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[6].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          BamboozledAgainFanfare[4].GetComponent<MeshRenderer>().material = IDontKnowIfINeedThis[Iteration % 2];
+          yield return new WaitForSeconds(.1f);
+          Iteration++;
+        }
+        break;
       }
     }
 
@@ -341,8 +422,55 @@ public class SilencedSimon : MonoBehaviour {
         }
       }
     }
-    /*
+
     IEnumerator TwitchHandleForcedSolve () {
-      yield return null;
-    }*/
+      while (!moduleSolved) {
+        int TempPrev = 0;
+        if (!SubmissionTime) {
+          OtherButtons[0].OnInteract();
+        }
+        Restart:
+        for (int i = 0; i < 4; i++) {
+          if (Submission[i] < VolumeHolders[i] && !PreviouslyPressed[i]) {
+            if (!Positivity) {
+              OtherButtons[1].OnInteract();
+            }
+            Buttons[i].OnInteract();
+          }
+          else if (Submission[i] > VolumeHolders[i] && !PreviouslyPressed[i]) {
+            if (Positivity) {
+              OtherButtons[2].OnInteract();
+            }
+            Buttons[i].OnInteract();
+          }
+          yield return new WaitForSeconds(.1f);
+          int QuickCheck = 0;
+          for (int j = 0; j < 4; j++) {
+            if (Submission[j] == VolumeHolders[j]) {
+              QuickCheck++;
+            }
+          }
+          if (QuickCheck == 3) {
+            int Temp2 = 0;
+            do {
+              Temp2 = UnityEngine.Random.Range(0, 4);
+            } while (PreviouslyPressed[Temp2]);
+            Buttons[Temp2].OnInteract();
+            yield return new WaitForSeconds(.1f);
+          }
+        }
+        bool Check = true;
+        for (int i = 0; i < 4; i++) {
+          if (Submission[i] != VolumeHolders[i]) {
+            Check = false;
+          }
+        }
+        if (Check) {
+          OtherButtons[0].OnInteract();
+        }
+        else {
+          goto Restart;
+        }
+      }
+    }
 }

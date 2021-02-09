@@ -14,7 +14,9 @@ MonoBehaviour:
   id: SilencedSimon
   title: Silenced Simon
   author: me
-  description: "\"\u2756\" - Simon.\n\nManual can be found at ktane.timwi.de"
+  description: "\"\u2756\" - Simon.\n\nFind the value of each button with some restrictions
+    and then submit it.\n\nManual can be found at ktane.timwi.de\n\nIf there are any
+    bugs contact Fartlicker777#9169 on Discord."
   version: 
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 64fee57ecd968f64d8db7769a344dd6f, type: 3}
