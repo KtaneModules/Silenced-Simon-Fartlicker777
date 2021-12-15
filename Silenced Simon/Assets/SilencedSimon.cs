@@ -165,6 +165,18 @@ public class SilencedSimon : MonoBehaviour {
             }
          }
       }
+      if (ButtonPressCount % 10 == 0 && ButtonPressCount != 0) {
+         Blocker[0].gameObject.SetActive(true);
+         Blocker[1].gameObject.SetActive(false);
+      }
+      else if (ButtonPressCount % 5 == 0) {
+         Blocker[0].gameObject.SetActive(false);
+         Blocker[1].gameObject.SetActive(false);
+      }
+      else {
+         Blocker[0].gameObject.SetActive(false);
+         Blocker[1].gameObject.SetActive(true);
+      }
    }
 
    void OtherButtonPress (KMSelectable Button) {
@@ -346,68 +358,58 @@ public class SilencedSimon : MonoBehaviour {
       }
    }
 
-   void Update () {
-      /*if (Bomb.GetStrikes() >= 2) {
-         Blocker[0].gameObject.SetActive(false);
-         Blocker[1].gameObject.SetActive(false);
-      }*/
-      if (ButtonPressCount % 10 == 0 && ButtonPressCount != 0) {
-         Blocker[0].gameObject.SetActive(true);
-         Blocker[1].gameObject.SetActive(false);
-      }
-      else if (ButtonPressCount % 5 == 0) {
-         Blocker[0].gameObject.SetActive(false);
-         Blocker[1].gameObject.SetActive(false);
-      }
-      else {
-         Blocker[0].gameObject.SetActive(false);
-         Blocker[1].gameObject.SetActive(true);
-      }
-   }
-
 #pragma warning disable 414
-   private readonly string TwitchHelpMessage = @"Use !{0} ######## to press that corresponding button in reading order.";
+   private readonly string TwitchHelpMessage = @"Use !{0} R/B/G/A/Y/W/K to press that corresponding button in reading order.";
 #pragma warning restore 414
 
    IEnumerator ProcessTwitchCommand (string Command) {
-      Command = Command.Trim();
+      Command = Command.Trim().ToUpper();
       yield return null;
-      if (!(Command.Any(AVariable => "1234567".Contains(AVariable)))) {
+      if (!Command.Any(AVariable => "RBGAYWK".Contains(AVariable))) {
          yield return "sendtochaterror I don't understand!";
       }
       else {
-         yield return null;
          for (int i = 0; i < Command.Length; i++) {
             switch (Command[i]) {
-               case '1':
-                  Buttons[0].OnInteract();
-                  yield return new WaitForSeconds(.1f);
+               case 'B':
+                  for (int j = 0; j < 4; j++) {
+                     if (PossibleButtons[j] == 0) {
+                        Buttons[j].OnInteract();
+                     }
+                  }
                   break;
-               case '2':
-                  Buttons[1].OnInteract();
-                  yield return new WaitForSeconds(.1f);
+               case 'G':
+                  for (int j = 0; j < 4; j++) {
+                     if (PossibleButtons[j] == 1) {
+                        Buttons[j].OnInteract();
+                     }
+                  }
                   break;
-               case '3':
-                  Buttons[2].OnInteract();
-                  yield return new WaitForSeconds(.1f);
+               case 'R':
+                  for (int j = 0; j < 4; j++) {
+                     if (PossibleButtons[j] == 2) {
+                        Buttons[j].OnInteract();
+                     }
+                  }
                   break;
-               case '4':
+               case 'Y':
+                  for (int j = 0; j < 4; j++) {
+                     if (PossibleButtons[j] == 3) {
+                        Buttons[j].OnInteract();
+                     }
+                  }
+                  break;
+               case 'A':
                   OtherButtons[0].OnInteract();
-                  yield return new WaitForSeconds(.1f);
                   break;
-               case '5':
-                  Buttons[3].OnInteract();
-                  yield return new WaitForSeconds(.1f);
-                  break;
-               case '6':
+               case 'W':
                   OtherButtons[1].OnInteract();
-                  yield return new WaitForSeconds(.1f);
                   break;
-               case '7':
+               case 'K':
                   OtherButtons[2].OnInteract();
-                  yield return new WaitForSeconds(.1f);
                   break;
             }
+            yield return new WaitForSeconds(.1f);
          }
       }
    }
